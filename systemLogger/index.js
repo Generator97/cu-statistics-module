@@ -29,10 +29,10 @@ module.exports = function systemLogger(mod) {
 	mod.hook('S_SYSTEM_MESSAGE', 1, event => {
 		writeLine(event.message,logSystem);
 	});
-	mod.hook('S_CHAT', 4, event => {
+	mod.hook('S_CHAT', 3, event => {
 		writeLine(`${event.channel}|${event.name}|${event.message}`,chatLog);
 	});
-	mod.hook('S_WHISPER', 4, event => {
+	mod.hook('S_WHISPER', 3, event => {
 		writeLine(`whisper ${event.recipient}|${event.name}|${event.message}`,chatLog);
 	});
 	mod.hook('S_USER_DEATH', 1, event => {
@@ -53,7 +53,7 @@ module.exports = function systemLogger(mod) {
 		}
 		writeLine(`${event.killed}|${event.name}|${killed.guildName}|${killed.templateId}|${event.killer}|${killer.guildName}|${killer.templateId}`,combatLog);
 	});
-	mod.hook('S_SPAWN_USER', 16, event => {
+	mod.hook('S_SPAWN_USER', 15, event => {
 		var obj={
 			name:event.name,
 			templateId:event.templateId,
